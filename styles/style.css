@@ -1,7 +1,37 @@
+/* Fonts */
+@font-face {
+  font-family: "Minecraft";
+  src: url(../assets/fonts/Minecraft.ttf) format("truetype");
+}
+
+/* Colors */
+
+:root {
+  --grey-light: #eadede;
+  --orange-light: #f58840;
+  --red-light: #b85252;
+  --black-dark: #000000;
+}
+
+/* CSS Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Elements */
+html {
+  font-size: 62.5%; /* font-size 1em = 10px on default browser settings */
+}
+
+body {
+  font-family: "Minecraft", Verdana, sans-serif;
+}
+
+/* General */
+.hidden {
+  display: none;
 }
 
 .page-container {
@@ -18,20 +48,25 @@
   display: none;
 }
 
-.side-board {
+.side-nav {
   height: 100vh;
   width: 10vw;
-  border: 1px solid green;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: var(--red-light);
+  color: var(--grey-light);
+  box-shadow: -2px 4px 8px black;
 }
 
 .game-container {
   height: 100vh;
-  width: 80vw;
-  border: 1px solid blue;
+  width: 90vw;
+  background-color: var(--grey-light);
+  background-image: url(../assets/img/background.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
 }
@@ -43,7 +78,6 @@
   grid-template-columns: repeat(20, 1fr);
   grid-template-rows: repeat(22, 1fr);
   position: relative;
-  border: 1px solid red;
 }
 
 .sky {
@@ -52,29 +86,45 @@
 
 .earth {
   background-color: rgb(66, 45, 6);
+  background-image: url("../assets/img/earth.jpg");
+  background-size: cover;
 }
 
 .topEarth {
   background-color: rgb(48, 85, 0);
+  background-image: url("../assets/img/topearth.jpg");
+  background-size: cover;
 }
 
 .leaves {
   background-color: green;
+  background-image: url("../assets/img/leaves5.jpg");
+  background-size: contain;
+  background-position: center center;
 }
 
 .rock {
   background-color: grey;
+  background-image: url("../assets/img/stone.jpg");
+  background-size: cover;
 }
 
 .wood {
   background-color: rgb(165, 91, 42);
+  background-image: url("../assets/img/wood.jpg");
+  background-size: contain;
 }
 
 .cloud {
-  background-color: white;
+  /* background-color: white; */
+  background-color: rgb(0, 204, 255);
+
+  background-image: url("../assets/img/cloud.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-div:hover {
+.game-board div:hover {
   border: 1px solid rgb(182, 180, 180);
 }
 

@@ -1,0 +1,44 @@
+.start-screen {
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90vw;
+  height: 100vh;
+  background-image: url(../assets/img/background.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.start-screen-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.start-logo img {
+  width: 60%;
+}
+
+.start-button-container {
+  margin-top: 5rem;
+}
+
+.start-button {
+  padding: 1rem 1rem 1rem 2rem;
+  font-family: "Minecraft", Verdana, sans-serif;
+  letter-spacing: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  background-color: var(--grey-light);
+  color: var(--red-light);
+  border: 0.2rem solid var(--black-dark);
+}
+
+.start-button:hover {
+  background-color: var(--red-light);
+  color: var(--grey-light);
+}

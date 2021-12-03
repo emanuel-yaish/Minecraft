@@ -5,41 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-</body>
-
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/startscreen.css">
+    <link rel="stylesheet" href="styles/sidenav.css">
     <title>Minecraft 2D</title>
     <script src="scripts/index.js" defer></script>
 </head>
 
-
 <body>
     <div class="page-container">
         <div class="game-container">
-            <div class="start-screen">
-                <div class="star-logo"></div>
-                <button class="startButton"></button>
+            <div class="start-screen hidden">
+                <div class="start-screen-container">
+                    <div class="start-logo"><img src="assets/img/logo.png"></div>
+                    <div class="start-button-container">
+                        <button class="start-button">START</button>
+                    </div>
+                </div>
             </div>
             <div class="game-board"></div>
         </div>
-        <div class="side-board">
-            <button class="shovel">dsfg</button>
-            <button class="axe">dsfg</button>
-            <button class="pickAxe">dsfg</button>
+        <div class="side-nav">
+            <button class="side-nav-button pickAxe">
+                <figure><img src="assets/img/pickaxe.png" alt="shovel">
+                    <figcaption class="tool-name">PICKAXE</figcaption>
+                </figure>
+            </button>
+            <button class="side-nav-button shovel">
+                <figure><img src="assets/img/shovel.png" alt="shovel">
+                    <figcaption class="tool-name">SHOVEL</figcaption>
+                </figure>
+            </button>
+            <button class="side-nav-button axe">
+                <figure><img src="assets/img/axe.png" alt="shovel">
+                    <figcaption class="tool-name axe">AXE</figcaption>
+                </figure>
+            </button>
             <div class="invetory"></div>
         </div>
     </div>

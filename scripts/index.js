@@ -56,3 +56,10 @@ const minecraft = {
 
 console.log("here");
 minecraft.init();
+
+const startButton = document.querySelector(".start-button");
+const startScreen = document.querySelector(".start-screen");
+startButton.addEventListener("click", () => {
+  console.log("click");
+  startScreen.classList.toggle("hidden");
+});

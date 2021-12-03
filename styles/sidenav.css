@@ -1,0 +1,21 @@
+.side-nav-button {
+  margin-bottom: 3rem;
+  border: 2px solid var(--grey-light);
+  background-color: transparent;
+  width: 12rem;
+  height: 13rem;
+  color: var(--grey-light);
+  font-family: "Minecraft", Verdana, sans-serif;
+}
+
+.side-nav-button:hover {
+  color: var(--red-light);
+  background-color: var(--grey-light);
+  border: 2px solid var(--black-dark);
+}
+.shovel {
+}
+.axe {
+}
+.pickAxe {
+}
