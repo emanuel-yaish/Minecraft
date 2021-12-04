@@ -1,0 +1,56 @@
+.game-board {
+  height: 100%;
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(22, 1fr);
+  position: relative;
+  box-shadow: 2px 4px 8px black;
+}
+
+.sky {
+  background-color: rgb(0, 204, 255);
+}
+
+.earth {
+  background-color: rgb(66, 45, 6);
+  background-image: url("../assets/img/earth.jpg");
+  background-size: cover;
+}
+
+.topEarth {
+  background-color: rgb(48, 85, 0);
+  background-image: url("../assets/img/topearth.jpg");
+  background-size: cover;
+}
+
+.leaves {
+  background-color: green;
+  background-image: url("../assets/img/leaves.jpg");
+  background-size: contain;
+  background-position: center center;
+}
+
+.rock {
+  background-color: grey;
+  background-image: url("../assets/img/stone.jpg");
+  background-size: cover;
+}
+
+.wood {
+  background-color: rgb(165, 91, 42);
+  background-image: url("../assets/img/wood.jpg");
+  background-size: contain;
+}
+
+.cloud {
+  background-color: rgb(0, 204, 255);
+
+  background-image: url("../assets/img/cloud.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.game-board div:hover {
+  border: 1px solid rgb(182, 180, 180);
+}
