@@ -20,6 +20,16 @@
   font-family: "Minecraft", Verdana, sans-serif;
 }
 
+.side-nav-button.selected {
+  border: 2px solid var(--orange-light);
+  background-color: var(--grey-light);
+  color: var(--orange-light);
+}
+
+.side-nav-button.test {
+  background-color: black;
+}
+
 .side-nav-button:hover,
 .inventory:hover {
   color: var(--red-light);
@@ -37,4 +47,8 @@
   height: 4%;
   width: 20%;
   border: 1px solid black;
+}
+
+.inventory.selected {
+  border: 1px solid var(--orange-light);
 }

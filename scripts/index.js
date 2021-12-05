@@ -1,13 +1,14 @@
 const minecraft = {
   ROWS: 22,
   COLUMNS: 20,
-  material: ["sky", "cloud", "leaves", "wood", "rock", "topEarth", "earth"],
+  material: ["sky", "cloud", "leaves", "wood", "rock", "top-earth", "earth"],
   tools: {
     pickAxe: ["rock"],
-    shovel: ["earth", "topEarth"],
+    shovel: ["earth", "top-earth"],
     axe: ["leaves", "wood"],
   },
-  inventory: "",
+  inventory: [],
+  //   inventoryElement: "",
   gameBoard: "",
   gameBoardArray: [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -33,12 +34,7 @@ const minecraft = {
     [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
     [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
   ],
-  //   sideNav: {
-  //     pickAxe: "",
-  //     shovel: "",
-  //     axe: "",
-  //     inventory: "",
-  //   },
+
   selectedTool: "",
 
   // check if the tool and the tile has the same material if has return the material
@@ -47,62 +43,117 @@ const minecraft = {
       if (tile.classList.contains(toolMaterialArray[index]))
         return toolMaterialArray[index];
     }
-    return "material";
+    return "";
+  },
+
+  removeSelected() {
+    this.sideNavButtons.forEach((navButton) => {
+      navButton.classList.remove("selected");
+      this.inventoryElement.classList.remove("selected");
+    });
   },
 
   //   selecting a tool event
   clickOnTool() {
-    const sideNavButtons = document.querySelectorAll(".side-nav-button");
-    sideNavButtons.forEach((element) => {
+    this.sideNavButtons.forEach((element) => {
       element.addEventListener("click", () => {
         this.selectedTool = element.getAttribute("data-tool");
+        this.removeSelected();
+        element.classList.add("selected");
       });
     });
-    //   console.log(element.getAttribute("data-tool"));
-    // });
-    // console.log();
-    // this.sideNav.pickAxe.addEventListener("click", (e) => {
-    //   console.log("pickAxe");
-    //   this.selectedTool = "pickAxe";
-    // });
   },
 
   //   selecting the inventory
-  clickOnInventory() {},
+  clickOnInventory() {
+    this.inventoryElement.addEventListener("click", () => {
+      this.selectedTool = "inventory";
+      console.log("clicked");
+      this.removeSelected();
+      this.inventoryElement.classList.add("selected");
+    });
+  },
+
+  addInventoryToGameBoard(tile) {
+    const inventory = this.inventory;
+    const inventoryElement = this.inventoryElement;
+
+    tile.classList.add(inventory.pop());
+    inventoryElement.classList = "";
+    if (inventory.length > 0)
+      inventoryElement.classList.add(
+        "inventory",
+        inventory[inventory.length - 1],
+        "selected"
+      );
+    else inventoryElement.classList.add("inventory", "selected");
+  },
 
   //   gameboard click event
   clickOnGameBoard() {
     this.gameBoard.addEventListener("click", (e) => {
       if (this.selectedTool === "") return;
 
-      // get tile
       const selectedTile = e.target.closest("div");
+
+      if (this.selectedTool === "inventory") {
+        if (selectedTile.classList.length > 1) return;
+        if (this.inventory.length === 0) return;
+        this.addInventoryToGameBoard(selectedTile);
+        return;
+      }
+
+      // get tile matrial
       const selectedToolMaterials = this.tools[this.selectedTool];
       const materialToRemove = this.checkIfTileContainMaterial(
         selectedTile,
         selectedToolMaterials
       );
 
-      // remove tile
-      if (materialToRemove !== "")
+      // remove tile and add material to inventory
+      if (materialToRemove !== "") {
         selectedTile.classList.remove(materialToRemove);
+        this.inventory.push(materialToRemove);
+        this.inventoryElement.classList = "";
+        this.inventoryElement.classList.add("inventory", materialToRemove);
+      } else {
+        if (
+          selectedTile.classList.length > 1 &&
+          !selectedTile.classList.contains(this.material[1])
+        ) {
+          const sideNavButtonsArr = [...this.sideNavButtons];
+          const selecedToolElement = sideNavButtonsArr.find((navButton) =>
+            navButton.classList.contains("selected")
+          );
+          selecedToolElement.classList.add("test");
+          setTimeout(function () {
+            selecedToolElement.classList.remove("test");
+          }, 200);
+        }
+      }
+    });
+  },
+
+  clickStartScreen() {
+    this.startButton.addEventListener("click", () => {
+      this.startScreen.classList.toggle("hidden");
     });
   },
 
   initEvents() {
+    this.clickStartScreen();
     this.clickOnTool();
     this.clickOnInventory();
     this.clickOnGameBoard();
   },
 
   init() {
+    this.startButton = document.querySelector(".start-button");
+    this.startScreen = document.querySelector(".start-screen");
     this.gameBoard = document.querySelector(".game-board");
-    // this.sideNav.pickAxe = document.querySelector(".pickAxe");
-    // this.sideNav.shovel = document.querySelector(".shovel");
-    // this.sideNav.axe = document.querySelector(".axe");
-    // this.sideNav.inventory = document.querySelector(".inventory");
+    this.inventoryElement = document.querySelector(".inventory");
+    this.sideNavButtons = document.querySelectorAll(".side-nav-button");
     this.initEvents();
-    console.log(this.gameBoard);
     this.draw();
   },
 
@@ -123,9 +174,3 @@ const minecraft = {
 };
 
 minecraft.init();
-
-const startButton = document.querySelector(".start-button");
-const startScreen = document.querySelector(".start-screen");
-startButton.addEventListener("click", () => {
-  startScreen.classList.toggle("hidden");
-});
