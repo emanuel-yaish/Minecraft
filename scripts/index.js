@@ -123,9 +123,9 @@ const minecraft = {
           const selecedToolElement = sideNavButtonsArr.find((navButton) =>
             navButton.classList.contains("selected")
           );
-          selecedToolElement.classList.add("test");
+          selecedToolElement.classList.add("wrong-material");
           setTimeout(function () {
-            selecedToolElement.classList.remove("test");
+            selecedToolElement.classList.remove("wrong-material");
           }, 200);
         }
       }
