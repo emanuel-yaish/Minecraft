@@ -8,7 +8,6 @@ const minecraft = {
     axe: ["leaves", "wood"],
   },
   inventory: [],
-  //   inventoryElement: "",
   gameBoard: "",
   gameBoardArray: [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -68,7 +67,6 @@ const minecraft = {
   clickOnInventory() {
     this.inventoryElement.addEventListener("click", () => {
       this.selectedTool = "inventory";
-      console.log("clicked");
       this.removeSelected();
       this.inventoryElement.classList.add("selected");
     });
@@ -140,11 +138,23 @@ const minecraft = {
     });
   },
 
+  ResetGameBoard() {
+    this.resetButton.addEventListener("click", () => {
+      this.draw();
+      this.inventory = [];
+      this.removeSelected();
+      this.selectedTool = "";
+      this.inventoryElement.classList = "";
+      this.inventoryElement.classList.add("inventory");
+    });
+  },
+
   initEvents() {
     this.clickStartScreen();
     this.clickOnTool();
     this.clickOnInventory();
     this.clickOnGameBoard();
+    this.ResetGameBoard();
   },
 
   init() {
@@ -152,19 +162,20 @@ const minecraft = {
     this.startScreen = document.querySelector(".start-screen");
     this.gameBoard = document.querySelector(".game-board");
     this.inventoryElement = document.querySelector(".inventory");
+    this.resetButton = document.querySelector(".reset-button");
     this.sideNavButtons = document.querySelectorAll(".side-nav-button");
     this.initEvents();
     this.draw();
   },
 
   draw() {
+    this.gameBoard.textContent = "";
     for (let i = 0; i < this.ROWS; i++) {
       for (let j = 0; j < this.COLUMNS; j++) {
         const tile = document.createElement("div");
         tile.classList.add(this.material[0]);
         tile.setAttribute("xAxis", i);
         tile.setAttribute("yAxis", j);
-        console.log(i, j);
         tile.classList.add(this.material[this.gameBoardArray[i][j]]);
         this.gameBoard.appendChild(tile);
         tile.addEventListener("click", () => {});

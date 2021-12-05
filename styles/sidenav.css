@@ -36,12 +36,6 @@
   background-color: var(--grey-light);
   border: 2px solid var(--black-dark);
 }
-/* .shovel {
-}
-.axe {
-}
-.pickAxe {
-} */
 
 .inventory {
   height: 4%;
@@ -50,5 +44,21 @@
 }
 
 .inventory.selected {
+  border: 1px solid var(--orange-light);
+}
+
+.reset-button {
+  margin-top: 5rem;
+  background-color: var(--black-dark);
+  color: var(--grey-light);
+  padding: 1rem;
+  border: none;
+  box-shadow: 0.2rem 0.4rem 0.8rem var(--black-dark);
+  text-transform: uppercase;
+  border: 1px solid var(--black-dark);
+}
+
+.reset-button:hover {
+  color: var(--orange-light);
   border: 1px solid var(--orange-light);
 }
