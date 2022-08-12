@@ -3,7 +3,8 @@ This is a clone of Minecraft game built with HTML CSS JAVASCRIPT this project is
 
 https://flamboyant-engelbart-f2a9f7.netlify.app/
 
-![Screenshot](assets/img/minecraft.png)
+[![name](assets/img/minecraft.png)]([link to your URL](https://flamboyant-engelbart-f2a9f7.netlify.app/))
+
 
 
 
