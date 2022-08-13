@@ -7,4 +7,4 @@ https://flamboyant-engelbart-f2a9f7.netlify.app/
 
 
 
-![Screenshot](assets/img/minecraft.png)
+![App Screenshot](assets/img/minecraft.png)
